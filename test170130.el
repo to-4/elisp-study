@@ -26,7 +26,7 @@
 ;;          decrement: 減少
 ;;     ※これらのフレーズは、Lisp が開発された頃の極めて初期 のハードウェアの特定の部分に基づくもの
 ;;
-;; 
+;;   --------------
 ;;   リスト定義は、"(値1 値2 …)"
 ;;               "(list フォーム1 フォーム2 …)" ※フォーム評価結果からなるリスト
 ;;   リストを変数に代入する時、リストの先頭のコンスセルの場所を指す。
@@ -37,7 +37,17 @@
 ;;   返り値が、リストのインデックス番目の要素となります
 ;;
 ;;   nth/énθ/ [形]n番目の; n倍の; n次の
-;; 
+;;
+;;   --------------
+;;   リストに追加する方法は
+;;     1. "(setq [リスト] (cons [追加する値] [リスト])"
+;;     2. "(add-to-list '[リスト] [追加する値])"
+;;     3. "(setq [リスト]
+;;               (append [リスト] '("[追加する値)")))
+;;     ※1,2は、先頭に追加。3は、末尾に追加。(appendは、『リストを結合する関数』)
+;;       append /əpénd/ [動]〈付録などを〉〔…に〕添える，付加[追加]する〔to〕
+;;       e.g. append notes to a book (本に注を添える)
+;;
 
 ;; make list
 (cons 1 (cons 2 (cons 3 nil)))
@@ -45,9 +55,20 @@
 '(1 2 3)
 
 ;; add list
+;; - cons cell
 (setq lst (cons 3 nil))
 (setq lst (cons 2 lst))
 (setq lst (cons 1 lst))
+;; - add-to-list
+(setq lst2 (cons 3 nil))
+(add-to-list 'lst2 2)
+(add-to-list 'lst2 1)
+;; - append
+(setq lst3 (cons 1 nil))
+(setq lst3
+      (append lst3 '(2)))
+(setq lst3
+      (append lst3 '(3)))
 
 ;; get car of list
 (car lst)
