@@ -15,7 +15,7 @@
 ;; load-pathに追加(サブフォルダ含む)
 (append-to-load-path "conf" "site-lisp")
 
-;; 対応する括弧をハイライトする
-(setq show-paren-delay 0)
-(show-paren-mode t)
+;; 分割された設定ファイルを読込
+(require 'init-loader)
+(init-loader-load "~/.emacs.d/conf")
 
