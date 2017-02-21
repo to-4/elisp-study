@@ -31,11 +31,29 @@
 ;;       CocoaEmacs: Mac向けのEmacs23以降のEmacs.app。
 ;;
 
+;; ==============================================
+
+;; 拡張機能のinit-loader を読み込む
+(require 'init-loader)
+
+;; バージョンによって、初期画面にinit log が表示される
+;; これをエラー時のみ表示するように、下記の設定
+(setq init-loader-show-log-after-init 'error-only)
+;; ただ、上記にしてエラーなしでもログが表示される時もある、その時は、nilをセット。
+;; (setq init-loader-show-log-after-init nil)
+
+;; ちなみに、下記の機能を呼び出すと、ログを表示できる
+(init-loader-show-log)
+
+;; 設定ファイルが格納されているフォルダを指定
+(init-loader-load "~/.emacs.d/conf")
+
 
 ;; 下記をinit.elに追加
 ;; ============================================
 
 ;; 分割された設定ファイルを読込
 (require 'init-loader)
+(setq init-loader-show-log-after-init 'error-only)
 (init-loader-load "~/.emacs.d/conf")
 

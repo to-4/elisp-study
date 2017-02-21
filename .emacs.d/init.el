@@ -17,5 +17,6 @@
 
 ;; 分割された設定ファイルを読込
 (require 'init-loader)
+(setq init-loader-show-log-after-init 'error-only)
 (init-loader-load "~/.emacs.d/conf")
 
