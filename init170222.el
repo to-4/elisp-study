@@ -52,16 +52,48 @@
 ;;
 ;; - 使い方
 ;;   1. "M-x list-packages" [RET] で、"*Packages*"バッファが開かれて利用可能なパッケージが表示される
+;;      この時に、"~/.emacs.d/elpa” が作成され、
+;;      同時に、[elpa]フォルダの直下に[archives]フォルダとその配下に[gnu][marmalade][melpa] が作成される。
+;;      その3つのフォルダそれぞれに、”archive-contents”ファイルが作成される（内容は、パッケージ一覧？）
+;;   
 ;;   2. インストール対象の行で"i"を押すと、候補として"I"が付く。  
 ;;   3. "x"を押すと、"Install package '[パッケージ名]'? (y or n) が表示され、"y"を押すとインストールが開始される。
 ;;   4. "Package menu: Operation finished ~" と表示されたら、完了。
 ;;
 ;; - インストールの流れ
 ;;   1. パッケージが"~/.emacs.d/elpa/[バッケージ名]にダウンロードされます
-;;      ※elpaフォルダは自動で作成される
+;;      ※[パッケージ名]フォルダは自動で作成される
 ;;   2. バイトコンパイルされる (elcファイルが作成される)
 ;;   ※ なお、"~/.emacs.d/elpa/[パッケージ名]は、自動的に"load-path"に追加される
+;;
+;; - init.el の更新
+;;   インストール完了すると、下記のような記載がinit.elに追加される
+;;   ”//"から始まる行はこちらでメモした内容
+;;
 
+;;  // "custom-set-variables"機能は、"custom.el"で定義された関数
+;;  // 変数に値をセットできる？
+;; (custom-set-variables
+;;  
+;;  ;; custom-set-variables was added by Custom.
+;;  ;; If you edit it by hand, you could mess it up, so be careful.
+;;  ;; Your init file should contain only one such instance.
+;;  ;; If there is more than one, they won't work right.
+
+;;  // "package-selected-packages"は、package.elで、定義されている変数
+;;  // この変数に、インストールしたパッケージ名が格納される
+;;  // ※例として、"redo+" と "auto-complete"をインストール時の内容を記載
+;;  '(package-selected-packages (quote (auto-complete redo+))))
+
+;; (custom-set-faces
+;;  ;; custom-set-faces was added by Custom.
+;;  ;; If you edit it by hand, you could mess it up, so be careful.
+;;  ;; Your init file should contain only one such instance.
+;;  ;; If there is more than one, they won't work right.
+;;  )
+;;   
+;;   
+;;   
 ;; ---------------------------------------------------------------------------------
 
 ;; 
