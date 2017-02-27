@@ -106,18 +106,24 @@
 ;;  ;; If there is more than one, they won't work right.
 ;;  )
 ;;   
-;; // 
-;; // 上記のように、init.elにcustom-set-variablesの設定が追記されてしまう
-;; // 下記の設定をinit.elに加えると、書き出し先を
-;; // "~/.emacs.d/custom.el"に変更できるらしい
-;; // 
-;; // 
-;; // ;; 追加パッケージ設定をinit.elに追記するのを防ぐ
-;; // (load
-;; //   (setq custom-file
-;; //     (expand-file-name "custom.el" user-emacs-directory))) 
-;; // 
-;; // 
+;; 
+;; - custom-set-variables 設定の外出し
+;; 
+;;   上記のように、init.elにcustom-set-variablesの設定が追記されてしまう
+;;   下記の設定をinit.elに加えると、書き出し先を
+;;   "~/.emacs.d/custom.el"に変更できる。
+;;   ;; 追加パッケージ設定をinit.elに追記するのを防ぐ
+;;   (load
+;;     (setq custom-file
+;;       (expand-file-name "custom.el" user-emacs-directory))) 
+;;  
+;;   ※customize-variables 等で設定される内容は、例えば[Options]-[Customize Emacs] 等で、
+;;   　テーマを変えたりすると、記載される。これらは、デフォルトだと、init.elの末尾に追記されてしまう。
+;;   
+;;   上記の記述を"init.el"の末尾に追記。
+;;   emacsを立ち上げると、"custom.el"が無いとエラーが表示されるが、
+;;   何か、パッケージをインストールし、
+;;   "M-x list-packages" とすると、~/.emacs.d/に"custom.el"が自動生成される。
 ;;   
 ;; ---------------------------------------------------------------------------------
 

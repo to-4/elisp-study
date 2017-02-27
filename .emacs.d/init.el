@@ -20,3 +20,8 @@
 (setq init-loader-show-log-after-init 'error-only)
 (init-loader-load "~/.emacs.d/conf")
 
+;; 追加パッケージ設定をinit.elに追記するのを防ぐ
+(load
+  (setq custom-file
+    (expand-file-name "custom.el" user-emacs-directory))) 
+
