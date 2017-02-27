@@ -71,8 +71,20 @@
 ;;   ”//"から始まる行はこちらでメモした内容
 ;;
 
-;;  // "custom-set-variables"機能は、"custom.el"で定義された関数
-;;  // 変数に値をセットできる？
+;; // "custom-set-variables"機能は、"custom.el"で定義された関数
+;; // 変数に値をセットできる？
+;; // 
+;; // Emacsにはdefcustom というマクロがあり、パッケージ開発者はユーザが変更できる
+;; // 変数を定義する場合、defvarではなく、defcustom を使うのが一般的らしい
+;; // defcustom で定義された変数は、ユーザが customize-variable 関数など
+;; // customize-* 関数で手軽に値を変更しやすいようになっている。
+;; // 
+;; // customize-* 関数で変更した変数は custom-set-variables 関数により
+;; // 変数名(シンボル) と 値のペアが 'user の'theme-settings に登録されるよう
+;; // 
+;; // custom-set-variables 関数は、値をセットする際にカスタム変数に定義された
+;; // セッター関数を実行するなど、setq 関数とは違った機能があるため、使用推奨？
+;; // 
 ;; (custom-set-variables
 ;;  
 ;;  ;; custom-set-variables was added by Custom.
@@ -83,6 +95,8 @@
 ;;  // "package-selected-packages"は、package.elで、定義されている変数
 ;;  // この変数に、インストールしたパッケージ名が格納される
 ;;  // ※例として、"redo+" と "auto-complete"をインストール時の内容を記載
+;;  // (quote [object]) は、スペシャルフォーム quote で、objectを評価せずに含める
+;;  // 下記の場合、『(auto-complete redo+)』をそのままセット？
 ;;  '(package-selected-packages (quote (auto-complete redo+))))
 
 ;; (custom-set-faces
@@ -92,7 +106,18 @@
 ;;  ;; If there is more than one, they won't work right.
 ;;  )
 ;;   
-;;   
+;; // 
+;; // 上記のように、init.elにcustom-set-variablesの設定が追記されてしまう
+;; // 下記の設定をinit.elに加えると、書き出し先を
+;; // "~/.emacs.d/custom.el"に変更できるらしい
+;; // 
+;; // 
+;; // ;; 追加パッケージ設定をinit.elに追記するのを防ぐ
+;; // (load
+;; //   (setq custom-file
+;; //     (expand-file-name "custom.el" user-emacs-directory))) 
+;; // 
+;; // 
 ;;   
 ;; ---------------------------------------------------------------------------------
 
