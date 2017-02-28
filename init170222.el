@@ -125,6 +125,15 @@
 ;;   何か、パッケージをインストールし、
 ;;   "M-x list-packages" とすると、~/.emacs.d/に"custom.el"が自動生成される。
 ;;   
+;;   ただ、packages.el がinit.elの上部に下記の内容を自動で書き込む。回避策不明。。
+;;   
+;;   ;; Added by Package.el.  This must come before configurations of
+;;   ;; installed packages.  Don't delete this line.  If you don't want it,
+;;   ;; just comment it out by adding a semicolon to the start of the line.
+;;   ;; You may delete these explanatory comments.
+;;   (package-initialize)
+;;   
+;;   
 ;; ---------------------------------------------------------------------------------
 
 ;; 
