@@ -1,4 +1,4 @@
-﻿;;
+;;
 ;; [2017.02.28]
 ;; auto-install を利用する方法
 ;;  
@@ -24,18 +24,38 @@
 ;; auto-install の設定
 (when (require 'auto-install nil t)
   ;; インストールディレクトリを設定 初期値は"~/.emacs.d/auto-install/"
-  (setq auto-install-directory "~/.emacs.d/site-lisp")
+  (setq auto-install-directory "~/.emacs.d/site-lisp/")
   ;; EmacsWiki に登録されている elisp の名前を取得
   (auto-install-update-emacswiki-package-name t)
   ;; install-elisp の関数を利用可能に
   (auto-install-compatibility-setup))
 ;; ------------------------------------------------------------------
+;; 
+;; - エラー時の対応
+;;   エラーが起こる可能性が多く、解消出来ずに多くの時間を使ったのでメモしておく。
+;; 
+;;   [現象] (auto-install-update-emacswiki-package-name -t) 実行時にエラー。
+;;          
+;;   [原因1] openssl がきちんと動作していない
+;;   [対応1] 1) openssl のバージョンが低い。HomeBlueでopensslの最新バージョンをインストール。
+;;             (homeblueやopensslのインストール方法は、割愛）
+;;          2) openssl の最新バージョンのシンボリックリンクを/usr/local/bin/に作成
+;;             ※元々ある古いopensslが/usr/bin/にあり、これをやらないと古いバージョンを使ってしまうため
+;;             (作成方法は割愛)
+;;          3) emacsの環境変数PATHにOSの環境変数PATHを継承するように設定
+;;             ※macでは、appから起動すると、OSのPATHを継承せず、
+;;               最終的に外部exeアクセス用のexec-pathに、2)のリンクのフォルダが含まれない為。
+;;             cocoa-mac-00-path.elを作成し、OSのPATHを継承するよう設定  
+;; 
+;; 
 ;;
 ;; - 使い方：
 ;;   "M-x install-elisp [RET]" とすると、Elisp のURLをきかれる
 ;;   URLを入力。(e.g. http://www.emacswiki.org/download/redo+.el)
 ;;
-;;   ダウンロードが開始され、終了後は"C-c C-c"をタイプすれば、インストール完了。
+;;   ダウンロードが開始される。
+;;   ダウンロード完了後は、バッファが切り替わり、上部に指定したURLが記載される。モードラインには、"Type C-c C-c to continue; .."等が表示。
+;;   この時に、"C-c C-c"をタイプすれば、ミニバッファに"installation is completed"と表示され、インストール完了。
 ;;
 ;;
 
