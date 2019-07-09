@@ -3,7 +3,9 @@
 ;;  タブエディタ化の方法
 ;;
 ;;  - "tabbar.el"の拡張機能で、実現する
-;;    拡張機能は、"M-x package-list-packages" から、"tabbar" を選んでインストール
+;;    拡張機能は、
+;;      まずに、"M-x package-refresh-contents"
+;;      次にに、"M-x package-list-packages" から、"tabbar" を選んでインストール
 ;;  - その後は、下記の様に、"init.el"に追加
 ;; --------------------------------------------------------
 
