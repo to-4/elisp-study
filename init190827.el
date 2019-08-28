@@ -31,7 +31,6 @@
 
 
 ;; powerline
-
 (require 'powerline)
 
 (defun powerline-my-theme ()
