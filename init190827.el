@@ -15,6 +15,18 @@
 ;;    補足：
 ;;    init.el の内容を再起動せずに反映するには、
 ;;    (M-x eval-buffer)
+;;
+;;    powerline-raw:
+;;      syntax: (powerline-raw STR &optional FACE PAD)
+;;      description: Render STR as mode-line data using Face
+;;                     and optionally PAD import on left (l) or right (r).
+;;                   render: [他動] 5a. 表現する、描写する render a landscape (風景を描く)
+;;                   raw: [形] 2 未加工の
+;;
+;;    setq-default:
+;;      すべてのバッファに影響
+;;    
+;;       
 ;; --------------------------------------------------------
 
 
@@ -36,9 +48,9 @@
                           (separator-left (intern (format "powerline-%s-%s"
                                                           (powerline-current-separator)
                                                           (car powerline-default-separator-dir))))
-                          (lhs (list (powerline-raw " " face1)
+                          (lhs (list (powerline-raw        " " face1)
                                      (powerline-major-mode face1)
-                                     (powerline-raw " " face1)
+                                     (powerline-raw        " " face1)
                                      (funcall separator-left face1 face2)
                                      (powerline-buffer-id nil )
                                      (powerline-raw " [ ")
@@ -64,8 +76,8 @@
   (make-face face-name)
   (set-face-attribute face-name nil
                       :foreground fg-color :background bg-color :box nil :weight weight))
-(make/set-face 'mode-line-1-fg "#282C34" "#EF8300" 'bold)
-(make/set-face 'mode-line-2-fg "#AAAAAA" "#2F343D" 'bold)
+(make/set-face 'mode-line-1-fg     "#282C34" "#EF8300" 'bold)
+(make/set-face 'mode-line-2-fg     "#AAAAAA" "#2F343D" 'bold)
 (make/set-face 'mode-line-1-arrow  "#AAAAAA" "#3E4451" 'bold)
 (make/set-face 'mode-line-2-arrow  "#AAAAAA" "#3E4451" 'bold)
 
