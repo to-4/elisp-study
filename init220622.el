@@ -5,7 +5,7 @@
 ;; --------------------------------------------------------
 
 ;; 自動保存をやめる（***~.txt の保存）
-(seq quto-save-default nil)
+(setq auto-save-default nil)
 
 
 
